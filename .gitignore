@@ -10,3 +10,5 @@ outputs/demo/*
 !outputs/demo/results/
 !outputs/demo/figures/
 metis_notebook_project/
+data/blind/
+outputs/blind/

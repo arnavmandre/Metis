@@ -1,0 +1,78 @@
+{
+  "protocol": {
+    "version": 1,
+    "description": "Retrospective holdout, blind to fitting and selection; not prospective or externally administered",
+    "data_start": "1999-01-01",
+    "train_start": "2000-01-01",
+    "train_end": "2014-12-31",
+    "validation_end": "2019-12-31",
+    "test_end": "2025-12-31",
+    "horizon": 20,
+    "high_vol_training_quantile": 0.75,
+    "classification_threshold": 0.5,
+    "state_counts": [
+      2,
+      3,
+      4
+    ],
+    "fit_seeds": [
+      7,
+      42,
+      99
+    ],
+    "hmm_iterations": 60,
+    "allocation_equity_range": [
+      0.8,
+      0.1
+    ],
+    "commission_bps": 5,
+    "slippage_bps": 5,
+    "rebalance_every": 5,
+    "min_trade": 0.05,
+    "execution_delay": 1,
+    "bootstrap_replicates": 1000,
+    "bootstrap_block_sessions": 60,
+    "bootstrap_seed": 1907,
+    "synthetic_train_seed": 11,
+    "synthetic_test_seeds": [
+      97,
+      123,
+      2026
+    ],
+    "synthetic_rows": 1800,
+    "ood_z_limit": 8.0,
+    "deployment_gate": "Research/paper use only. No live-trading approval from this evaluation."
+  },
+  "data_seal": {
+    "development_sha256": "701ed9c052e5c1b5c3e404d67e6de07641b615532a6a2cb9ed5048a0e076c384",
+    "holdout_sha256": "c4e332edfaba27fc128f4a05d90bd6c964a2e4f421650d5f2a8a8498e591c189"
+  },
+  "source_hashes": {
+    "blind.py": "2e52c257b721c672046899c98a0a97b76bf6a9f182edf26aa0e8f6d911abb0d2",
+    "blind_protocol.json": "5545804d85ed79269afd09e344b8e902e8918514b47aa7344cb1c91efaf04a34",
+    "src/reliability.py": "8a790d2bf635006027acc65a167af0f0d9a452e144ed8377b3984e04153131fc",
+    "src/blind_research.py": "d09384814487c0579f17b81671e9fa0ffb27112203e065a0544855c2522cf87f",
+    "src/historical.py": "ac376d0588d89c374e1d7aec65b41f7cc1ba455b807e8670a642cc2e12cc13c3",
+    "src/hmm_model.py": "fa57563b32b15649f124c7c2988a4ce122ef6ea66c44b348e045c87040057cae",
+    "src/features.py": "6921a0acc845876ca2e6010c039fbece860d64ac35f4c24779c2135e76813d3e",
+    "src/backtest.py": "7910564690bbc9a12a4cd488cb1ba74184c736706502937fa15fd61504e2c03c",
+    "src/metrics.py": "13f1d6cf3f4035bc7cebeb01222ae33070cc19bf4064971c76f4061fb07999d5"
+  },
+  "model_sha256": "859db4d24fe09809789ba5c8196f761598f6521a7020b9fd2e1d8c82a47e3674",
+  "synthetic_model_sha256": "b6fab177930c49f6deec0917cb78a13474f751f9bb1f1c8612dffb04f2e3a780",
+  "provenance": {
+    "source_url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors_daily_CSV.zip",
+    "description_url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html",
+    "archive_sha256": "1916d331c2c51d2aee3d00215897d2b8e5995cb387f1f4569ba46bff5fb049a8",
+    "source_header": "This file was created by using the 202607 CRSP database.",
+    "start": "1999-01-04",
+    "end": "2025-12-31",
+    "rows": 6791,
+    "equity": "US value-weight CRSP market total-return research proxy; not SPY",
+    "defensive": "Daily one-month Treasury-bill return research proxy; not a bond ETF",
+    "point_in_time": false,
+    "publication_delay": "French data are released after observation dates; not a contemporaneous live feed."
+  },
+  "status": "FROZEN BEFORE HOLDOUT EVALUATION",
+  "scope": "Retrospective historical holdout; researcher knows history. Not prospective or independent third-party validation."
+}
