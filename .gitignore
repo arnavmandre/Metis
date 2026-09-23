@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+data/raw/*.csv
+data/raw/*.source.txt
+outputs/*
+!outputs/demo/
+outputs/demo/*
+!outputs/demo/results/
+!outputs/demo/figures/
+metis_notebook_project/
