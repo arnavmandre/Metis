@@ -1,0 +1,69 @@
+{
+  "protocol": {
+    "version": 2,
+    "train_start": "2000-01-01",
+    "train_end": "2022-12-31",
+    "selection_end": "2024-12-31",
+    "calibration_end": "2025-12-31",
+    "test_end": "2026-07-31",
+    "horizon": 20,
+    "event_threshold": 0.20922860954618785,
+    "event_threshold_origin": "Frozen v1 training 75th percentile; unchanged for comparison",
+    "candidates": [
+      "trailing_vol",
+      "logistic_regularized",
+      "logistic",
+      "boosting_shallow",
+      "boosting_medium",
+      "har_volatility"
+    ],
+    "selection_metric": "Brier score on 2023-2024",
+    "calibration": "2025 sigmoid calibration with purged outcomes, C=1; skip when fewer than 10 examples in either class",
+    "alert_threshold": "maximize F2 on 2025 subject to precision >= 0.35 and false-positive rate <= 0.25; fixed grid 0.05 to 0.85; otherwise 0.5",
+    "bootstrap_replicates": 1000,
+    "bootstrap_block_sessions": 20,
+    "seed": 20260924,
+    "cost_bps_per_leg": 10,
+    "rebalance_every": 5,
+    "min_trade": 0.05,
+    "ood_z_limit": 8.0,
+    "allocation": "0.8 - 0.7 * calibrated high-vol probability, clipped to [0.1,0.8]",
+    "scope": "2020-2025 are consumed development data. 2026 is new retrospective holdout, not a prospective trial. No performance guarantee."
+  },
+  "source_hashes": {
+    "upgrade.py": "6205ef7588607ca1e75b4161256ac402f5db10268f7bd3efac1d29d492010f65",
+    "v2_protocol.json": "6a457be0dd3d33846f2fcf2597528570fc21dd0ad504fff1d5f5d28e1e4ad5c1",
+    "src/features_v2.py": "8f855d8b94521c56c512d02cb5fae5b2ad41b49363cdd83a7ca005bf6a4add99",
+    "src/model_v2.py": "e8eaf411d7a3583d8ce493a5a5952055d30ae84eaeef7c8bc8149e027688a429",
+    "src/historical.py": "ac376d0588d89c374e1d7aec65b41f7cc1ba455b807e8670a642cc2e12cc13c3",
+    "src/reliability.py": "8a790d2bf635006027acc65a167af0f0d9a452e144ed8377b3984e04153131fc",
+    "src/backtest.py": "7910564690bbc9a12a4cd488cb1ba74184c736706502937fa15fd61504e2c03c",
+    "src/metrics.py": "13f1d6cf3f4035bc7cebeb01222ae33070cc19bf4064971c76f4061fb07999d5",
+    "src/hmm_model.py": "fa57563b32b15649f124c7c2988a4ce122ef6ea66c44b348e045c87040057cae",
+    "src/features.py": "6921a0acc845876ca2e6010c039fbece860d64ac35f4c24779c2135e76813d3e",
+    "research/frozen/model.json": "859db4d24fe09809789ba5c8196f761598f6521a7020b9fd2e1d8c82a47e3674"
+  },
+  "model_sha256": "432a0769fb2837714d6cede8628ad19b9c68dc46a4740468d3604b469d967fbf",
+  "data_seal": {
+    "development": "17a4c92ecca06b8cda629e5059fcd11afe5bc34c551cc8976286b07aaa0068a6",
+    "holdout": "9b902f07dba32a06069cf05fdda04588b5d19af524a3bb9454b9f67ac58cddfd",
+    "provenance": {
+      "source_url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors_daily_CSV.zip",
+      "description_url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html",
+      "archive_sha256": "1916d331c2c51d2aee3d00215897d2b8e5995cb387f1f4569ba46bff5fb049a8",
+      "source_header": "This file was created by using the 202607 CRSP database.",
+      "start": "1999-01-04",
+      "end": "2026-07-31",
+      "rows": 6936,
+      "equity": "US value-weight CRSP market total-return research proxy; not SPY",
+      "defensive": "Daily one-month Treasury-bill return research proxy; not a bond ETF",
+      "point_in_time": false,
+      "publication_delay": "French data are released after observation dates; not a contemporaneous live feed."
+    }
+  },
+  "champion": "boosting_shallow",
+  "feature_count": 31,
+  "instrument": "US_CRSP_MARKET",
+  "status": "Frozen before 2026 reveal",
+  "warning": "Only load the locally generated, checksummed pickle; never an untrusted pickle"
+}
